@@ -1,0 +1,136 @@
+%%%% Dissertation Cover Page template
+%%%% Following regulations found at: 
+%%%% https://www.tilburguniversity.edu/nl/onderwijs/researchmasters-en-promoveren/reglement/
+
+\makeatletter
+\def\ifemptyarg#1{%
+  \if\relax\detokenize{#1}\relax % H. Oberdiek
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+
+\newcommand{\dcptitle}[1]{\ifemptyarg{#1}{\@dcptitle}{\def\@dcptitle{#1}}}
+\newcommand{\dcpsubtitle}[1]{\ifemptyarg{#1}{\ifdefined\@dcpsubtitle\@dcpsubtitle\else\fi}{\def\@dcpsubtitle{#1}}}
+
+% first name and middle names written in full, followed by last name
+% maiden name for women
+\newcommand{\dcpname}[1]{\ifemptyarg{#1}{\@dcpname}{\def\@dcpname{#1}}}
+% City where you were born, when outside Netherlands add country
+% e.g, 'Brussels, België'
+\newcommand{\dcpbirthplace}[1]{\ifemptyarg{#1}{\@dcpbirthplace}{\def\@dcpbirthplace{#1}}}
+
+% defaults to Tilburg University
+\newcommand{\dcpuniversity}[1]{\ifemptyarg{#1}{\ifdefined\@dcpuniversity\@dcpuniversity\else 
+Tilburg University\fi}{\def\@dcpuniversity{#1}}}
+\newcommand{\dcprector}[1]{\ifemptyarg{#1}{\@dcprector}{\def\@dcprector{#1}}}
+
+ % Default 'aula', might want 'Ruth First zaal' or other
+\newcommand{\dcplocation}[1]{\ifemptyarg{#1}{\ifdefined\@dcplocation\@dcplocation\else 
+aula\fi}{\def\@dcplocation{#1}}}
+% day daynumber month year
+\newcommand{\dcpdate}[1]{\ifemptyarg{#1}{\@dcpdate}{\def\@dcpdate{#1}}}
+% hour.minutes
+\newcommand{\dcptime}[1]{\ifemptyarg{#1}{\@dcptime}{\def\@dcptime{#1}}}
+
+\newcommand{\dcpfirstpromotor}[1]{\def\@dcpfirstpromotor{#1}}
+\newcommand{\dcpsecondpromotor}[1]{\def\@dcpsecondpromotor{#1}}
+
+\newcommand{\dcppromotores}[0]{\ifdefined\@dcpsecondpromotor%
+\textbf{Promotores:}\\
+\@dcpfirstpromotor \\ 
+\@dcpsecondpromotor \\
+\else
+\textbf{Promotor:} \\
+\@dcpfirstpromotor \\
+\fi}
+
+\newcommand{\dcpfirstcopromotor}[1]{\def\@dcpfirstcopromotor{#1}}
+\newcommand{\dcpsecondcopromotor}[1]{\def\@dcpsecondcopromotor{#1}}
+
+\newcommand{\dcpcopromotores}{\ifdefined\@dcpsecondcopromotor%
+\textbf{Copromotores:}\\
+\@dcpfirstcopromotor \\ \@dcpsecondcopromotor \\
+\else
+\textbf{Copromotor:} \\
+\@dcpfirstcopromotor \\
+\fi}
+
+% Listing committee is optional
+\newcommand{\dcpcommittee}{\textbf{Promotiecommissie:} \\}
+\newcommand{\dcpcommitteemember}[1]{%
+  \g@addto@macro\dcpcommittee{#1 \\}
+  \def\@dcphavecommittee{True}
+}
+
+\newcommand{\dcpcustom}[1]{\ifemptyarg{#1}{\@dcpcustom}{\def\@dcpcustom{#1}}}
+
+\newcommand{\dcprender}{%
+\pagestyle{empty}
+
+{\centering
+ \linespread{1.5}\selectfont
+
+\textbf{\dcptitle{}}
+
+\vspace{1.25\baselineskip}
+
+\dcpsubtitle{}
+
+\vspace{2\baselineskip}
+
+\begin{obeylines}
+Proefschrift ter verkrijging van de graad van doctor
+
+aan \dcpuniversity{}
+
+op gezag van de rector magnificus,
+
+\dcprector{},
+
+in het openbaar te verdedigen ten overstaan van 
+
+een door het college voor promoties aangewezen commissie
+
+in de \dcplocation{} van de Universiteit
+
+op \dcpdate{} om \dcptime{} uur
+\end{obeylines}
+
+\vspace{\baselineskip}
+
+door
+\vspace{\baselineskip}
+
+\textbf{\dcpname{}}
+
+\vspace{\baselineskip}
+geboren te \dcpbirthplace{}
+
+}
+
+\clearpage
+\pagestyle{empty}
+
+\noindent\dcppromotores{}
+
+\ifdefined\@dcpfirstcopromotor%
+\noindent \dcpcopromotores{}
+\else
+\fi
+
+\ifdefined\@dcphavecommittee%
+\noindent \dcpcommittee{}
+\else
+\fi
+
+\vfill
+
+\ifdefined\@dcpcustom%
+\noindent \dcpcustom{}
+\else
+\fi
+
+}
+
+\makeatother

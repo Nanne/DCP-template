@@ -1,0 +1,45 @@
+%%%% Example usage of
+%%%% Tilburg University Dissertation Cover Page template
+%%%% Following regulations found at: 
+%%%% https://www.tilburguniversity.edu/nl/onderwijs/researchmasters-en-promoveren/reglement/
+
+\documentclass[12pt, letterpaper]{book}
+
+\begin{document}
+
+\input{dcptemplate} % load commands needed to define template
+
+\dcptitle{Your Title}
+\dcpsubtitle{Your Subtitle}
+\dcpname{Your name}
+\dcpbirthplace{Birthplace}
+%\dcpuniversity{Tilburg University} % defaults to Tilburg University
+\dcprector{prof dr. E. H. L. Aarts}
+%\dcplocation{aula} % Default 'aula', might want 'Ruth First zaal' or other
+\dcpdate{maandag 1 januari 1970} % day daynumber month year
+\dcptime{10.00} % hour.minutes
+
+% title, initials, lastname
+\dcpfirstpromotor{Prof. Dr. T.H.E. Promotor}
+%\dcpsecondpromotor{Prof. Dr. A. Promotor} % comment if only one
+
+% title, initials, lastname
+\dcpfirstcopromotor{Dr. D. Re}
+\dcpsecondcopromotor{Dr. D.O.O. Little}
+
+% Listing committee is optional
+% title, initials, lastname
+\dcpcommitteemember{Prof. Dr. A. Name}
+\dcpcommitteemember{Prof. Dr. A.B. Name}
+\dcpcommitteemember{Dr. C. Another}
+\dcpcommitteemember{Dr. E. Tc}
+
+% Perhaps you want to add custom info such as:
+% ISBN info
+% Name printer
+% Copyright info
+%\dcpcustom{Custom information here.}
+
+\dcprender
+
+\end{document}
